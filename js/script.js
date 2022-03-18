@@ -5,17 +5,18 @@ Este es un creador de codigo para productos que ingresan a un inventario.
 let cLog = console.log;
 let identificadorProducto;
 let cantProductos;
-let arranque = prompt('¿Quieres agregar productos? Escribe Si o No');
+let arranque = prompt('¿Quieres agregar productos? Escribe Si o No').toUpperCase();
 let vRam = 0;
 let vSsd = 0;
 let vUsb = 0;
 let varComun = 0;
+let arrayComponentes = [];
 
 /*Proceso de obtencion de datos al tipo de producto a agregar y cuantos de ellos*/
-while (arranque != 'No') {
+while (arranque != 'NO') {
     switch (arranque) {
-        case 'Si':
-            identificadorProducto = prompt('Inserta el tipo de producto a añadir de los siguientes: RAM, SSD, USB');
+        case 'SI':
+            identificadorProducto = prompt('Inserta el tipo de producto a añadir de los siguientes: RAM, SSD, USB').toUpperCase();
             cantProductos = parseInt(prompt('¿Cuantos productos se ingresan a inventario?'));
             switch (identificadorProducto) {
                 case 'RAM':
@@ -39,25 +40,30 @@ while (arranque != 'No') {
             break;
         default:
             alert('Opcion incorrecta. Intenta nuevamente.')
-            arranque = prompt('¿Quieres agregar productos? Escribe Si o No');
+            arranque = prompt('¿Quieres agregar productos? Escribe Si o No').toUpperCase();
             break;
     }
 }
 
 /*Simulador de encuesta*/
-let respuestaPoll = prompt('¿Desea responder una encuesta? Si o No');
-if (respuestaPoll == 'Si') {
+let respuestaPoll = prompt('¿Desea responder una encuesta? Si o No').toUpperCase();
+if (respuestaPoll == 'SI') {
     alert('Muchas gracias por tus comentarios');
 } else {
-    if (respuestaPoll == 'No') {
+    if (respuestaPoll == 'NO') {
         alert('Que tengas excelente dia');
     }
+}
+
+/*Imprime los datos generados dentro del array*/
+for (let i = 0; i < arrayComponentes.length; i++) {
+    cLog(arrayComponentes[i]);    
 }
 
 /*Proceso etiquetador. Se usa el mismo sin importar el producto*/
 function etiquetasGen(a, b, c) {
     for (i = 1; i <= a; i++) {
-        cLog(b + '000' + (i + c));
+        arrayComponentes.push(b + '000' + (i + c));
     }
-    arranque = prompt('¿Algo mas por agregar? Escribe Si o No');
+    arranque = prompt('¿Algo mas por agregar? Escribe Si o No').toUpperCase();
 }
