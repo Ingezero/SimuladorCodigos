@@ -5,19 +5,68 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Desafio Complementario 1 - Luis Castro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <title>Inventario PCTOTAL</title>
 </head>
 <body>
     <header>
-        <Span><h1><strong>Primer enterga</strong></h1></Span>
+        <span class="tituloAlto"><h2>Inventario de productos</h2></span>
     </header>
-    <main>
-        <span><h2>Este es un creador de codigo para productos que ingresan a un inventario y se basa en continuar 
-            el numero en el cual se quedo si existia una creacion anterior. Manejo de If, For, Switch, While, array y array push.</h2></span>
+    
+    <main class="mainDisplay">
+        
+    <div class="agregarItems">
+        <form>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Selecciona un componente</option>
+                <option value="1">RAM</option>
+                <option value="2">SSD</option>
+                <option value="3">USB</option>
+            </select>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">¿Cuantos deseas agregar?</label>
+              <input type="number" class="form-control" id="exampleInputPassword1">
+            </div>
+           <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>
+    </div>
+
+    <div class="productosAgregados">
+        <div class="card">
+            <img src="img/ram.png" class="card-img-top" alt="ram">
+            <div class="card-body">
+              <h5 class="card-title">Memoria RAM</h5>
+              <p class="card-text">Caracteristicas de producto</p>
+              <a href="#" class="btn btn-primary">Seleccionar</a>
+            </div>
+          </div><div class="card">
+            <img src="img/ssd.png" class="card-img-top" alt="ssd">
+            <div class="card-body">
+              <h5 class="card-title">Disco SSD</h5>
+              <p class="card-text">Caracteristicas de producto</p>
+              <a href="#" class="btn btn-primary">Seleccionar</a>
+            </div>
+          </div><div class="card">
+            <img src="img/usb.png" class="card-img-top" alt="usb">
+            <div class="card-body">
+              <h5 class="card-title">Memoria USB</h5>
+              <p class="card-text">Caracteristicas de producto</p>
+              <a href="#" class="btn btn-primary">Seleccionar</a>
+            </div>
+          </div>
+    </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </main>
+    
     <footer>
-        <span><h4><strong>Luis Castro</strong></h4></span>
+        <span class="tituloBajo"><strong>Desarrollado por Luis Castro</strong></span>
+        <span class="tituloBajo"><strong>Jalisco, Mexico 2022</strong></span>
     </footer>
+   
     <script src="js/script.js"></script>
 </body>
 </html>

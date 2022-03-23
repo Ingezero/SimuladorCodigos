@@ -1,5 +1,67 @@
-h5{
+main{
+    height: auto;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:skyblue;
+    height: 100px;
+    text-align: center;
+}
+
+main{
+    background-color: skyblue;
+    height: auto;
+    
+}
+
+footer{
+    display: flexbox;
+    align-items: flex-end;
+    background-color: skyblue;
+}
+
+.mainDisplay{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 20% 80% 20%;
+    grid-template-rows: 30% 70%;        
+    grid-template-areas: "izq espacio1 der"
+                         "izq espacio2 der";
+}
+
+.tituloAlto{
     color: blue;
-    font-style: Century Gothic, cursive;
+    font-style: Verdana;
     font-size: 35px;
+}
+
+.tituloBajo{
+    display:flex;
+    font-size: 10px;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+}
+
+.agregarItems{
+    align-items: center;
+    font-size: 18px;
+    width: auto;
+    font-style: Century Gothic;
+    grid-area: espacio1;
+}
+
+.productosAgregados{
+    display: flex;
+    justify-content: space-between;
+    grid-area: espacio2;
+}
+
+.card{
+    width: 250px;
+    height: auto;
+    
 }

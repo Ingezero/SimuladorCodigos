@@ -63,7 +63,10 @@ for (let i = 0; i < arrayComponentes.length; i++) {
 /*Proceso etiquetador. Se usa el mismo sin importar el producto*/
 function etiquetasGen(a, b, c) {
     for (i = 1; i <= a; i++) {
-        arrayComponentes.push(b + '000' + (i + c));
+        arrayComponentes.push({producto: b + '000' + (i + c)});
     }
     arranque = prompt('¿Algo mas por agregar? Escribe Si o No').toUpperCase();
 }
+
+const filtroProdCinco = arrayComponentes.filter((element) => element.producto.includes("5"));
+cLog(filtroProdCinco);
