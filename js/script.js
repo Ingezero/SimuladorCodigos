@@ -45,20 +45,19 @@ while (arranque != 'NO') {
     }
 }
 
-/*Simulador de encuesta*/
-let respuestaPoll = prompt('¿Desea responder una encuesta? Si o No').toUpperCase();
-if (respuestaPoll == 'SI') {
-    alert('Muchas gracias por tus comentarios');
-} else {
-    if (respuestaPoll == 'NO') {
-        alert('Que tengas excelente dia');
-    }
-}
+//Obtiene el elemento donde imprimira las etiquetas generadas
+let productosPrint = document.querySelector("#productosAgregados")
 
 /*Imprime los datos generados dentro del array*/
 for (let i = 0; i < arrayComponentes.length; i++) {
-    cLog(arrayComponentes[i]);    
+    productosPrint.innerHTML += arrayComponentes[i].producto;
+    productosPrint.innerHTML += "<br>";    
 }
+
+let finalDiv = document.createElement("div");
+finalDiv.innerHTML = "<h2>Aqui terminan los codigos generados</h2>";
+finalDiv.className = "tituloAlto1";
+document.body.append(finalDiv);
 
 /*Proceso etiquetador. Se usa el mismo sin importar el producto*/
 function etiquetasGen(a, b, c) {
@@ -67,6 +66,3 @@ function etiquetasGen(a, b, c) {
     }
     arranque = prompt('¿Algo mas por agregar? Escribe Si o No').toUpperCase();
 }
-
-const filtroProdCinco = arrayComponentes.filter((element) => element.producto.includes("5"));
-cLog(filtroProdCinco);

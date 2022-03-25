@@ -26,16 +26,24 @@ footer{
 .mainDisplay{
     display: grid;
     justify-content: center;
-    grid-template-columns: 20% 80% 20%;
-    grid-template-rows: 30% 70%;        
+/*     grid-template-columns: 20% 80% 20%;
+    grid-template-rows: 80% 20%;        
     grid-template-areas: "izq espacio1 der"
-                         "izq espacio2 der";
+                         "izq espacio2 der"; */
 }
 
 .tituloAlto{
     color: blue;
     font-style: Verdana;
     font-size: 35px;
+}
+
+.tituloAlto1{
+    color: blue;
+    font-style: Verdana;
+    font-size: 35px;
+    text-align: center;
+    background-color:skyblue;
 }
 
 .tituloBajo{
@@ -51,13 +59,14 @@ footer{
     font-size: 18px;
     width: auto;
     font-style: Century Gothic;
-    grid-area: espacio1;
+    /* grid-area: espacio1; */
 }
 
-.productosAgregados{
-    display: flex;
-    justify-content: space-between;
-    grid-area: espacio2;
+#productosAgregados{
+    display: block;
+    /* justify-content: space-between; */
+    /* grid-area: espacio2; */
+    flex-wrap: wrap;
 }
 
 .card{
