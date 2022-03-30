@@ -18,17 +18,17 @@
         
     <div class="agregarItems">
         <form>
-            <select class="form-select" aria-label="Default select example">
+            <select id="tipoProd" class="form-select" aria-label="Default select example">
                 <option selected>Selecciona un componente</option>
-                <option value="1">RAM</option>
-                <option value="2">SSD</option>
-                <option value="3">USB</option>
+                <option value="RAM">RAM</option>
+                <option value="SSD">SSD</option>
+                <option value="USB">USB</option>
             </select>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">¿Cuantos deseas agregar?</label>
-              <input type="number" class="form-control" id="exampleInputPassword1">
+              <input type="number" class="form-control" id="numeProd">
             </div>
-           <button type="submit" class="btn btn-primary">Agregar</button>
+           <button type="button" id="btnCrearEtiquetas" class="btn btn-primary">Crear</button>
         </form>
     </div>
 
