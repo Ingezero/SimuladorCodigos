@@ -21,15 +21,12 @@ footer{
     display: flexbox;
     align-items: flex-end;
     background-color: skyblue;
+    height: 100px;
 }
 
 .mainDisplay{
     display: grid;
     justify-content: center;
-/*     grid-template-columns: 20% 80% 20%;
-    grid-template-rows: 80% 20%;        
-    grid-template-areas: "izq espacio1 der"
-                         "izq espacio2 der"; */
 }
 
 .tituloAlto{
@@ -63,9 +60,7 @@ footer{
 }
 
 #productosAgregados{
-    display: block;
-    /* justify-content: space-between; */
-    /* grid-area: espacio2; */
+    display: inline-block;
     flex-wrap: wrap;
 }
 

@@ -2,84 +2,74 @@
 Este es un creador de codigo para productos que ingresan a un inventario.
 -Luis Castro-
 */
-let cLog = console.log;
-let identificadorProducto = "";
-let cantProductos = 0;
-let vRam = 0;
-let vSsd = 0;
-let vUsb = 0;
-let varComun = 0;
+let prodTipo = "";
+let prodModelo = "";
+let prodDescripcion = "";
+let prodPrecio = 0;
 let arrayComponentes = [];
 
-//Obtiene referencia del boton que debe ser presionado
-const btnGenDatos = document.getElementById("btnCrearEtiquetas");
-
-//Ejecuta si hay datos en el localStorage
-function recargarDatos() {
-    vRam = JSON.parse(localStorage.getItem("prodRAM"));
-    identificadorProducto = "RAM";
-    genEtiquetas();
-    vSsd = JSON.parse(localStorage.getItem("prodSSD"));
-    identificadorProducto = "SSD";
-    genEtiquetas();
-    vUsb = JSON.parse(localStorage.getItem("prodUSB"));
-    identificadorProducto = "USB";
-    genEtiquetas();
-    identificadorProducto = ""
+//Recuperar sesion anterior
+function renovarDatos(){
+    if (JSON.parse(localStorage.getItem("arrayComponentesBck")) === null){
+        
+    }else{
+        arrayComponentes = JSON.parse(localStorage.getItem("arrayComponentesBck"));
+        crearTodo();
+    }
 }
+renovarDatos();
 
-recargarDatos();
+//Obtiene referencia del boton que debe ser presionado
+const btnGenDatos = document.getElementById("btnCrearCard");
 
 // Evento generador de codigos al presionar el boton crear
 btnGenDatos.addEventListener("click", () => {
-    identificadorProducto = document.getElementById("tipoProd").value;
-    cantProductos = parseInt(document.getElementById("numeProd").value);
-    genEtiquetas();
+    prodTipo = document.getElementById("prodTipo").value;
+    prodModelo = document.getElementById("prodModelo").value;
+    prodDescripcion = document.getElementById("prodDescripcion").value;
+    prodPrecio = document.getElementById("prodPrecio").value;
+    genEtiquetas(prodTipo, prodModelo, prodDescripcion, prodPrecio);
 })
 
-//Funcion principal que genera todo los codigos
-function genEtiquetas() {
-    switch (identificadorProducto) {
-        case 'RAM':
-            varComun = vRam;
-            etiquetasGen(cantProductos, identificadorProducto, varComun);
-            vRam = vRam + cantProductos; /*Agrega ya en suma dependiendo de cuantos existan ya creados*/
-            localStorage.setItem("prodRAM", JSON.stringify(vRam));
-            break;
-        case 'SSD':
-            varComun = vSsd;
-            etiquetasGen(cantProductos, identificadorProducto, varComun);
-            vSsd = vSsd + cantProductos; /*Agrega ya en suma dependiendo de cuantos existan ya creados*/
-            localStorage.setItem("prodSSD", JSON.stringify(vSsd));
-            break;
-        case 'USB':
-            varComun = vUsb;
-            etiquetasGen(cantProductos, identificadorProducto, varComun);
-            vUsb = vUsb + cantProductos; /*Agrega ya en suma dependiendo de cuantos existan ya creados*/
-            localStorage.setItem("prodUSB", JSON.stringify(vUsb));
-            break;
-        default:
-            alert('Tipo de producto incorrecto, intenta nuevamente');
-    }
+//Agrega al array de Productos el elemento
+function genEtiquetas(a, b, c, d) {
+    arrayComponentes.push({
+        id: `componente${arrayComponentes.length + 1}`,
+        modelo: b,
+        descripcion: c,
+        precio: d,
+        ubicacion: a
+    });
+    crearTodo();
+    Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Producto fue añadido de forma exitosa',
+        showConfirmButton: false,
+        timer: 2500,
+        showCloseButton: true
+      })
+    Toastify({
+        text: `Actualmente hay ${arrayComponentes.length} articulos en inventario`, duration: 3500
+    }).showToast();
 }
 
-/*Proceso etiquetador. Se usa el mismo sin importar el producto*/
-function etiquetasGen(a, b, c) {
-    arrayComponentes = [];
-    for (i = 1 + c; i <= a + c; i++) {
-        arrayComponentes.push({
-            producto: b + '000' + (i)
-        });
-    }
-    
-
-    //Obtiene el elemento donde imprimira las etiquetas generadas
-    let productosPrint = document.querySelector("#productosAgregados")
-
-    /*Imprime los datos generados dentro del array*/
-    for (let i = 0; i < arrayComponentes.length; i++) {
-        productosPrint.innerHTML += arrayComponentes[i].producto;
-        productosPrint.innerHTML += "<br>";
-    };
-
+//Iniciar creador de cards para mostrar pproductos
+function crearTodo(){
+const agregarProductos = document.getElementById("productosAgregados");
+agregarProductos.textContent="";
+arrayComponentes.forEach((producto) => {
+    let tarjeta = document.createElement("div");
+    tarjeta.classList.add("card", `${producto.id}`);
+    tarjeta.innerHTML=`<img src=${producto.ubicacion} class="card-img-top" alt=${producto.modelo}>
+    <div class="card-body">
+      <h5 class="card-title">${producto.modelo}</h5>
+      <p class="card-text">${producto.descripcion}</p>
+      <p class="card-text">${producto.precio}</p>
+      <a href="#" class="btn btn-primary">Seleccionar</a>
+    </div>`;
+    agregarProductos.appendChild(tarjeta);
+    //Guardar actual array para evitar se pierda en recarga
+    localStorage.setItem("arrayComponentesBck", JSON.stringify(arrayComponentes));
+});
 }
