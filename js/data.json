@@ -1,0 +1,37 @@
+[
+    {
+        "id":"99901",
+        "modelo":"Corsair",
+        "descripcion":"Una fuente potente",
+        "precio":"895",
+        "ubicacion":"img/failed.png"
+    },
+    {
+        "id":"99902",
+        "modelo":"Barracuda",
+        "descripcion":"Un disco muy veloz",
+        "precio":"745",
+        "ubicacion":"img/failed.png"
+    },
+    {
+        "id":"99903",
+        "modelo":"Orion",
+        "descripcion":"Un microfono de muy alta calidad",
+        "precio":"1250",
+        "ubicacion":"img/failed.png"
+    },
+    {
+        "id":"99904",
+        "modelo":"CoolerMaster",
+        "descripcion":"Refrigeracion a su maxima expresion",
+        "precio":"345",
+        "ubicacion":"img/failed.png"
+    },
+    {
+        "id":"99905",
+        "modelo":"Astro",
+        "descripcion":"125",
+        "precio":"",
+        "ubicacion":"img/failed.png"
+    }
+]

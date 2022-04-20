@@ -7,6 +7,8 @@ let prodModelo = "";
 let prodDescripcion = "";
 let prodPrecio = 0;
 let arrayComponentes = [];
+let intruder = false;
+const agregarProductos = document.getElementById("productosAgregados");
 
 //Recuperar sesion anterior
 function renovarDatos(){
@@ -24,6 +26,7 @@ const btnGenDatos = document.getElementById("btnCrearCard");
 
 // Evento generador de codigos al presionar el boton crear
 btnGenDatos.addEventListener("click", () => {
+    agregarProductos.textContent = "";
     prodTipo = document.getElementById("prodTipo").value;
     prodModelo = document.getElementById("prodModelo").value;
     prodDescripcion = document.getElementById("prodDescripcion").value;
@@ -33,6 +36,10 @@ btnGenDatos.addEventListener("click", () => {
 
 //Agrega al array de Productos el elemento
 function genEtiquetas(a, b, c, d) {
+    if (JSON.parse(localStorage.getItem("arrayComponentesBck")) === null){
+    }else{
+        arrayComponentes = JSON.parse(localStorage.getItem("arrayComponentesBck"));
+    }
     arrayComponentes.push({
         id: `componente${arrayComponentes.length + 1}`,
         modelo: b,
@@ -55,8 +62,8 @@ function genEtiquetas(a, b, c, d) {
 }
 
 //Iniciar creador de cards para mostrar pproductos
+
 function crearTodo(){
-const agregarProductos = document.getElementById("productosAgregados");
 agregarProductos.textContent="";
 arrayComponentes.forEach((producto) => {
     let tarjeta = document.createElement("div");
@@ -70,6 +77,34 @@ arrayComponentes.forEach((producto) => {
     </div>`;
     agregarProductos.appendChild(tarjeta);
     //Guardar actual array para evitar se pierda en recarga
-    localStorage.setItem("arrayComponentesBck", JSON.stringify(arrayComponentes));
+    if(intruder == false){
+        localStorage.setItem("arrayComponentesBck", JSON.stringify(arrayComponentes));
+    }else{
+        intruder = true;
+    }
+
 });
 }
+
+
+//  Codigo para la obtencion de datos desde un fetch local relacionados a base de datos con antiguos productos.
+const btnViejos = document.getElementById("btnViejos");
+
+btnViejos.addEventListener("click", () => {
+    fetch('js/data.json')
+        .then((response) => response.json())
+        .then((data) => {
+            arrayComponentes = data
+            intruder = true;
+            crearTodo();
+            intruder = false;
+        })
+    
+})
+
+const btnLimpiar = document.getElementById("btnLimpiar");
+
+btnLimpiar.addEventListener("click", () => {
+    agregarProductos.textContent="";
+    arrayComponentes = JSON.parse(localStorage.getItem("arrayComponentesBck")); //Reestablece los datos anteriormente almacenados en localstorage
+})
